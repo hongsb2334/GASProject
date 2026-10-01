@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -20,7 +20,7 @@ public:
 	virtual void PostInitializeComponents() override;
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void ABPostInitializeComponents();
+	void PlayerPostInitializeComponents();
 
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override
 	{
@@ -48,7 +48,7 @@ protected:
 	TObjectPtr<class UAbilitySystemComponent> ASC;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GAS")
-	TArray<TSubclassOf<class UGameplayAbility>> initialAbilities;
+	TArray<TSubclassOf<class UGameplayAbility>> InitialAbilities;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Attribute")
 	TObjectPtr<class UPlayerAttributeSet> PlayerAttributeSet;

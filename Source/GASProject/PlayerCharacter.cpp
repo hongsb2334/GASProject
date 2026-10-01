@@ -4,6 +4,8 @@
 #include "PlayerCharacter.h"
 #include "PlayerAttributeSet.h"
 #include "Components/WidgetComponent.h"
+#include <AbilitySystemComponent.h>
+#include <Abilities/GameplayAbility.h>
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -32,7 +34,10 @@ void APlayerCharacter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 
-	ABPostInitializeComponents();
+	PlayerPostInitializeComponents();
+
+    ASC->SetNumericAttributeBase(PlayerAttributeSet->GetMaxHealthAttribute(), 200.0f);
+    ASC->SetNumericAttributeBase(PlayerAttributeSet->GetHealthAttribute(), 200.0f);
 
 }
 
@@ -41,6 +46,15 @@ void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+    ASC->InitAbilityActorInfo(this, this);
+
+    for (const TSubclassOf<UGameplayAbility>& Ability : InitialAbilities)
+    {
+        if (Ability)
+        {
+            ASC->GiveAbility(FGameplayAbilitySpec(Ability, 1, INDEX_NONE, this));
+        }
+    }
 }
 
 // Called every frame

@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "PlayerAttributeSet.h"
+#include "AbilitySystem/Attribute/PlayerAttributeSet.h"
 
 UPlayerAttributeSet::UPlayerAttributeSet() : MaxHealth(100.0f)
 {

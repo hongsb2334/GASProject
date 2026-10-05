@@ -32,7 +32,7 @@
 		},
 		{
 			"Name": "DualSenseGamepadSupport",
-			"Enabled": true
+			"Enabled": false
 		}
 	]
 }

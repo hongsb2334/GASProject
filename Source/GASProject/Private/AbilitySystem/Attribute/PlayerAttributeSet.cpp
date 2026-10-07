@@ -2,7 +2,8 @@
 
 
 #include "AbilitySystem/Attribute/PlayerAttributeSet.h"
-
+#include "GameplayEffectExtension.h"
+#include "LOPGameplayTags.h"
 UPlayerAttributeSet::UPlayerAttributeSet() : MaxHealth(100.0f)
 {
 	InitHealth(GetMaxHealth());
@@ -40,5 +41,17 @@ void UPlayerAttributeSet::PostAttributeChange(const FGameplayAttribute& Attribut
 
 void UPlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
+    Super::PostGameplayEffectExecute(Data);
 
+    if (Data.EvaluatedData.Attribute == GetHealthAttribute())
+    {
+        SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth()));
+
+        UAbilitySystemComponent& TargetASC = Data.Target;
+
+        if (GetHealth() <= 0.0f && !TargetASC.HasMatchingGameplayTag(LOPGameplayTags::Character_State_Dead))
+        {
+            TargetASC.AddLooseGameplayTag(LOPGameplayTags::Character_State_Dead);
+        }
+    }
 }

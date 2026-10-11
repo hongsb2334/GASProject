@@ -14,12 +14,14 @@ AWeaponBase::AWeaponBase()
 
 void AWeaponBase::NotifyActorBeginOverlap(AActor* OtherActor)
 {
+    Super::NotifyActorBeginOverlap(OtherActor);
+
     //GameplayEventData 구현
     FGameplayEventData Payload;
     Payload.Instigator = GetOwner();
     Payload.Target = OtherActor;
 
-    if (GetOwner() != OtherActor && HitActors.Contains(OtherActor))
+    if (GetOwner() != OtherActor && !HitActors.Contains(OtherActor))
     {
         HitActors.AddUnique(OtherActor);
         UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(GetOwner(), LOPGameplayTags::Event_Attack_Hit, Payload);

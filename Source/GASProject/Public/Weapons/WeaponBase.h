@@ -14,13 +14,17 @@ class GASPROJECT_API AWeaponBase : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AWeaponBase();
+    
+    UFUNCTION(BlueprintCallable)
+    void SetHitboxEnabled(bool bEnabled);
 
 protected:
     virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 
-    void SetHitboxEnabled(bool bEnabled);
+    
 
 protected:
+    UPROPERTY()
     TArray<TObjectPtr<AActor>> HitActors;
 
 };

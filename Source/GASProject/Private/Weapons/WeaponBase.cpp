@@ -16,10 +16,17 @@ void AWeaponBase::NotifyActorBeginOverlap(AActor* OtherActor)
 {
     Super::NotifyActorBeginOverlap(OtherActor);
 
+    if (!OtherActor || !GetOwner())
+    {
+        return;
+    }
+
     //GameplayEventData 구현
     FGameplayEventData Payload;
     Payload.Instigator = GetOwner();
     Payload.Target = OtherActor;
+
+    
 
     if (GetOwner() != OtherActor && !HitActors.Contains(OtherActor))
     {

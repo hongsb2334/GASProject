@@ -3,7 +3,6 @@
 
 #include "AbilitySystem/Abilities/GA_Attack.h"
 #include <GameFramework/Character.h>
-#include <GameFramework/CharacterMovementComponent.h>
 #include <Abilities/Tasks/AbilityTask_PlayMontageAndWait.h>
 #include <Abilities/Tasks/AbilityTask_WaitGameplayEvent.h>
 #include <AbilitySystemGlobals.h>
@@ -58,26 +57,6 @@ void UGA_Attack::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const 
         UAbilityTask_WaitGameplayEvent::WaitGameplayEvent(this, LOPGameplayTags::Event_Attack_Hit, nullptr, false, true);
     HitTask->EventReceived.AddDynamic(this, &UGA_Attack::OnHitEvent);
     HitTask->ReadyForActivation();
-}
-
-void UGA_Attack::EndAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, bool bReplicateEndAbility, bool bWasCancelled)
-{
-
-    //어빌리티가 종료되지 않았을 때만
-    if (IsEndAbilityValid(Handle, ActorInfo))
-    {
-        ACharacter* Character = Cast<ACharacter>(GetAvatarActorFromActorInfo());
-
-        if (Character)
-        {
-            Character->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
-        }
-    }
-    
-    
-    Super::EndAbility(Handle, ActorInfo, ActivationInfo, bReplicateEndAbility, bWasCancelled);
-
-    
 }
 
 void UGA_Attack::OnMontageFinished()

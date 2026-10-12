@@ -10,6 +10,9 @@ namespace LOPGameplayTags
 
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Attacking);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Dodging);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Guarding);
+
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_StaminaRegenBlocked);
     
     

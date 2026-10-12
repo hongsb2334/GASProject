@@ -22,7 +22,13 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+    virtual void InitializeAttributes() override;
 
+protected:
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Attribute")
+    TObjectPtr<class UPlayerAttributeSet> PlayerAttributeSet;
 
+    UPROPERTY(EditDefaultsOnly, Category = "Attribute")
+    float InitialMaxStamina = 100.0f;
 
 };

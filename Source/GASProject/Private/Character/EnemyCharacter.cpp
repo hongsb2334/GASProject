@@ -27,7 +27,7 @@ void AEnemyCharacter::BeginPlay()
 
     if (UHealthWidgetBase* Widget = Cast<UHealthWidgetBase>(HpBar->GetUserWidgetObject()))
     {
-        Widget->BindAttributeSet(PlayerAttributeSet);
+        Widget->BindAttributeSet(BaseAttributeSet);
     }
     else
     {

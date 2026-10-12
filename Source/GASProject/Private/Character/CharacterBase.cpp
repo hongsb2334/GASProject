@@ -2,7 +2,7 @@
 
 
 #include "Character/CharacterBase.h"
-#include "AbilitySystem/Attribute/PlayerAttributeSet.h"
+#include "AbilitySystem/Attribute/AttributeSetBase.h"
 
 #include <AbilitySystemComponent.h>
 #include <Abilities/GameplayAbility.h>
@@ -16,9 +16,8 @@ ACharacterBase::ACharacterBase()
     ASC = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
 
     //애트리뷰트 셋
-    PlayerAttributeSet = CreateDefaultSubobject<UPlayerAttributeSet>(TEXT("CharacterAttributeSet"));
-    ASC->AddAttributeSetSubobject<UPlayerAttributeSet>(PlayerAttributeSet);
-
+    BaseAttributeSet = CreateDefaultSubobject<UAttributeSetBase>(TEXT("CharacterAttributeSet"));
+    ASC->AddAttributeSetSubobject<UAttributeSetBase>(BaseAttributeSet);
 
     
 
@@ -45,8 +44,8 @@ void ACharacterBase::BeginPlay()
 
 void ACharacterBase::InitializeAttributes()
 {
-    ASC->SetNumericAttributeBase(PlayerAttributeSet->GetMaxHealthAttribute(), InitialMaxHealth);
-    ASC->SetNumericAttributeBase(PlayerAttributeSet->GetHealthAttribute(), InitialMaxHealth);
+    ASC->SetNumericAttributeBase(BaseAttributeSet->GetMaxHealthAttribute(), InitialMaxHealth);
+    ASC->SetNumericAttributeBase(BaseAttributeSet->GetHealthAttribute(), InitialMaxHealth);
 }
 
 void ACharacterBase::GiveInitialAbilities()

@@ -10,6 +10,9 @@ namespace LOPGameplayTags
 
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Attacking);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_StaminaRegenBlocked);
+    
+    
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Dead);
 
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event);
@@ -18,5 +21,12 @@ namespace LOPGameplayTags
 
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Character);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Character_HitCheck);
+
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Stamina_State_Empty);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Stamina_State_Remain);
+
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Dodge);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Guard);
+
 
 }

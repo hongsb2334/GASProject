@@ -2,9 +2,9 @@
 
 
 #include "UI/HealthWidgetBase.h"
-#include "AbilitySystem/Attribute/PlayerAttributeSet.h"
+#include "AbilitySystem/Attribute/AttributeSetBase.h"
 
-void UHealthWidgetBase::BindAttributeSet(UPlayerAttributeSet* AttributeSet)
+void UHealthWidgetBase::BindAttributeSet(UAttributeSetBase* AttributeSet)
 {
     if (!AttributeSet) return;
     BoundSet = AttributeSet;

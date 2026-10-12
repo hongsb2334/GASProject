@@ -37,7 +37,7 @@ protected:
     TArray<TSubclassOf<class UGameplayAbility>> InitialAbilities;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Attribute")
-    TObjectPtr<class UPlayerAttributeSet> PlayerAttributeSet;
+    TObjectPtr<class UAttributeSetBase> BaseAttributeSet;
 
     UPROPERTY(EditDefaultsOnly, Category = "Attribute")
     float InitialMaxHealth = 200.0f;

@@ -10,7 +10,7 @@
  * 
  */
 
-class UPlayerAttributeSet;
+class UAttributeSetBase;
 
 UCLASS()
 class GASPROJECT_API UHealthWidgetBase : public UUserWidget
@@ -20,7 +20,7 @@ class GASPROJECT_API UHealthWidgetBase : public UUserWidget
 public:
 
     UFUNCTION(BlueprintCallable)
-    void BindAttributeSet(UPlayerAttributeSet* AttributeSet);
+    void BindAttributeSet(UAttributeSetBase* AttributeSet);
 
 protected:
     UFUNCTION(BlueprintImplementableEvent)
@@ -33,6 +33,6 @@ protected:
     void HandleMaxHealthChanged(float OldValue, float NewValue);
 
     UPROPERTY()
-    TObjectPtr<UPlayerAttributeSet> BoundSet;
+    TObjectPtr<UAttributeSetBase> BoundSet;
 
 };

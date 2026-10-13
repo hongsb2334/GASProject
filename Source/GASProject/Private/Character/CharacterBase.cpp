@@ -3,7 +3,7 @@
 
 #include "Character/CharacterBase.h"
 #include "AbilitySystem/Attribute/AttributeSetBase.h"
-
+#include "Weapons/WeaponBase.h"
 #include <AbilitySystemComponent.h>
 #include <Abilities/GameplayAbility.h>
 
@@ -37,7 +37,8 @@ void ACharacterBase::BeginPlay()
 	Super::BeginPlay();
 	
     ASC->InitAbilityActorInfo(this, this);
-
+    
+    SpawnDefaultWeapon();
     GiveInitialAbilities();
 
 }
@@ -57,6 +58,31 @@ void ACharacterBase::GiveInitialAbilities()
             ASC->GiveAbility(FGameplayAbilitySpec(Ability, 1, INDEX_NONE, this));
         }
     }
+}
+
+void ACharacterBase::SpawnDefaultWeapon()
+{
+    if (!DefaultWeaponClass)
+    {
+        return;
+    }
+
+    //pino bp와 동일 로직
+    FActorSpawnParameters Params;
+
+    Params.Owner = this;
+    Params.Instigator = this;   
+    Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+    Params.TransformScaleMethod = ESpawnActorScaleMethod::MultiplyWithRoot;
+
+    EquippedWeapon = GetWorld()->SpawnActor<AWeaponBase>(DefaultWeaponClass, GetActorTransform(), Params);
+
+    if (EquippedWeapon)
+    {
+        EquippedWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, WeaponSocketName);
+    }
+
+
 }
 
 

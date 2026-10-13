@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "WeaponBase.generated.h"
 
+class UAnimMontage;
+
 UCLASS()
 class GASPROJECT_API AWeaponBase : public AActor
 {
@@ -15,6 +17,8 @@ public:
 	// Sets default values for this actor's properties
 	AWeaponBase();
     
+    UAnimMontage* GetComboMontage() const { return ComboMontage; }
+
     UFUNCTION(BlueprintCallable)
     void SetHitboxEnabled(bool bEnabled);
 
@@ -26,5 +30,8 @@ protected:
 protected:
     UPROPERTY()
     TArray<TObjectPtr<AActor>> HitActors;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Combo")
+    TObjectPtr<UAnimMontage> ComboMontage;
 
 };

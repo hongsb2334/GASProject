@@ -7,6 +7,8 @@
 #include "AbilitySystemInterface.h"
 #include "CharacterBase.generated.h"
 
+class AWeaponBase;
+
 UCLASS()
 class GASPROJECT_API ACharacterBase : public ACharacter, public IAbilitySystemInterface
 {
@@ -20,11 +22,15 @@ public:
 
     virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override { return ASC; }
 
+    UFUNCTION()
+    AWeaponBase* GetEquippedWeapon() const { return EquippedWeapon; }
+
 protected:
 	// Called when the game starts or when spawned
     virtual void BeginPlay() override;
     virtual void InitializeAttributes();
     void GiveInitialAbilities();
+    void SpawnDefaultWeapon();
 
 protected:
     
@@ -41,6 +47,16 @@ protected:
 
     UPROPERTY(EditDefaultsOnly, Category = "Attribute")
     float InitialMaxHealth = 200.0f;
+
+
+    UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+    TSubclassOf<AWeaponBase> DefaultWeaponClass;
+    
+    UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+    FName WeaponSocketName = TEXT("RHandWeaponSocket");
+
+    UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "Weapon")
+    TObjectPtr<AWeaponBase> EquippedWeapon;
 
 
 };

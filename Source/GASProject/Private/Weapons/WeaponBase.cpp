@@ -26,8 +26,6 @@ void AWeaponBase::NotifyActorBeginOverlap(AActor* OtherActor)
     Payload.Instigator = GetOwner();
     Payload.Target = OtherActor;
 
-    
-
     if (GetOwner() != OtherActor && !HitActors.Contains(OtherActor))
     {
         HitActors.AddUnique(OtherActor);

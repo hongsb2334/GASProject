@@ -30,6 +30,10 @@ namespace LOPGameplayTags
     UE_DEFINE_GAMEPLAY_TAG(Event_Character, "Event.Character");
     UE_DEFINE_GAMEPLAY_TAG(Event_Character_HitCheck, "Event.Character.HitCheck");
 
+    UE_DEFINE_GAMEPLAY_TAG(Event_Character_ComboInput, "Event.Character.CompoInput");
+    UE_DEFINE_GAMEPLAY_TAG(Event_Character_ComboWindow_Open, "Event.Character.ComboWindow.Open");
+    UE_DEFINE_GAMEPLAY_TAG(Event_Character_ComboWindow_Close, "Event.Character.ComboWindow.Close");
+
     UE_DEFINE_GAMEPLAY_TAG(Stamina_State_Empty, "Stamina.State.Empty");
     UE_DEFINE_GAMEPLAY_TAG(Stamina_State_Remain, "Stamina.State.Remain");
 }

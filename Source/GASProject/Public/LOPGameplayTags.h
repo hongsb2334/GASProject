@@ -25,11 +25,21 @@ namespace LOPGameplayTags
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Character);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Character_HitCheck);
 
+    //콤보
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Character_ComboInput);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Character_ComboWindow_Open);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Character_ComboWindow_Close);
+
+
+
+    //스태미너 상태
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Stamina_State_Empty);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Stamina_State_Remain);
 
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Dodge);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Guard);
+
+    
 
 
 }

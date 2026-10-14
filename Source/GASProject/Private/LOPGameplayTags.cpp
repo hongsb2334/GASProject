@@ -10,7 +10,7 @@ namespace LOPGameplayTags
     UE_DEFINE_GAMEPLAY_TAG(Character_Ability_Attack, "Character.Ability.Attack");
     UE_DEFINE_GAMEPLAY_TAG(Character_Ability_Dodge, "Character.Ability.Dodge");
     UE_DEFINE_GAMEPLAY_TAG(Character_Ability_Guard, "Character.Ability.Guard");
-
+    UE_DEFINE_GAMEPLAY_TAG(Character_Ability_Sprint, "Character.Ability.Sprint");
 
 
     UE_DEFINE_GAMEPLAY_TAG(Character_State, "Character.State");

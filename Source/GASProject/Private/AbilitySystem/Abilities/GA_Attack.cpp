@@ -7,6 +7,8 @@
 #include <Abilities/Tasks/AbilityTask_WaitGameplayEvent.h>
 #include <AbilitySystemGlobals.h>
 #include <AbilitySystemComponent.h>
+#include <Character/CharacterBase.h>
+#include <Weapons/WeaponBase.h>
 #include <LOPGameplayTags.h>
 UGA_Attack::UGA_Attack()
 {
@@ -23,19 +25,26 @@ UGA_Attack::UGA_Attack()
 
     //
     ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Attacking);
+    ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Dodging);
     ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Dead);
 
+    CancelAbilitiesWithTag.AddTag(LOPGameplayTags::Character_Ability_Sprint);
 }
 
 void UGA_Attack::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
 {
-    ACharacter* Character = Cast<ACharacter>(GetAvatarActorFromActorInfo());
+    ACharacterBase* Character = Cast<ACharacterBase>(GetAvatarActorFromActorInfo());
 
-    if (!Character || !AttackMontage)
+    AWeaponBase* Weapon = Character ? Character->GetEquippedWeapon() : nullptr;
+
+    ComboMontage = Weapon ? Weapon->GetComboMontage() : nullptr;
+
+    if (!ComboMontage || !CommitAbility(Handle, ActorInfo, ActivationInfo))
     {
-        EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
-        return;
+        
+
     }
+
 
     if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
     {
@@ -83,4 +92,20 @@ void UGA_Attack::OnHitEvent(FGameplayEventData Payload)
         GetAbilitySystemComponentFromActorInfo()->ApplyGameplayEffectSpecToTarget(*SpecHandle.Data.Get(), TargetASC);
     }
     
+}
+
+void UGA_Attack::OnComboInput(FGameplayEventData Payload)
+{
+}
+
+void UGA_Attack::OnComboWindowOpen(FGameplayEventData Payload)
+{
+}
+
+void UGA_Attack::OnComboWindowClose(FGameplayEventData Payload)
+{
+}
+
+void UGA_Attack::TryNextCombo()
+{
 }

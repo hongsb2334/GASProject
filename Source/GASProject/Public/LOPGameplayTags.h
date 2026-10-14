@@ -7,6 +7,8 @@ namespace LOPGameplayTags
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Attack);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Sprint);
+
 
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Attacking);

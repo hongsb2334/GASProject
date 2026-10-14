@@ -26,9 +26,6 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = "Attack")
     TSubclassOf<class UGameplayEffect> HitEffect;
 
-    UPROPERTY(EditDefaultsOnly, Category = "Attack")
-    TObjectPtr<class UAnimMontage> AttackMontage;
-
     UFUNCTION()
     void OnMontageFinished();
 
@@ -38,5 +35,23 @@ protected:
     UFUNCTION()
     void OnHitEvent(FGameplayEventData Payload);
 
+    UFUNCTION()
+    void OnComboInput(FGameplayEventData Payload);
+
+    UFUNCTION()
+    void OnComboWindowOpen(FGameplayEventData Payload);
+
+    UFUNCTION()
+    void OnComboWindowClose(FGameplayEventData Payload);
+
+private:
+    void TryNextCombo();
+
+    UPROPERTY()
+    TObjectPtr<UAnimMontage> ComboMontage;
+
+    int32 ComboIndex = 0;
+    bool bComboWindowOpen = false;
+    bool bComboInputBuffered = false;
 
 };

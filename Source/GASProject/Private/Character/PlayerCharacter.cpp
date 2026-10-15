@@ -3,6 +3,8 @@
 
 #include "Character/PlayerCharacter.h"
 #include "AbilitySystem/Attribute/PlayerAttributeSet.h"
+#include "UI/LOPHUD.h"
+#include <GameFramework/PlayerController.h>
 #include <LOPGameplayTags.h>
 
 
@@ -29,6 +31,19 @@ void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
     
+}
+
+void APlayerCharacter::BeginPlay()
+{
+    Super::BeginPlay();
+
+    if (APlayerController* PC = Cast<APlayerController>(GetController()))
+    {
+        if (ALOPHUD* LOPHUD = PC->GetHUD<ALOPHUD>())
+        {
+            LOPHUD->InitOverlay(ASC);
+        }
+    }
 }
 
 // Called to bind functionality to input

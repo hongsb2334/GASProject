@@ -133,11 +133,8 @@ void UGA_Attack::TryNextCombo()
         return;
     }
 
-    //최대 콤보에 도달하면 콤보 끝
-    if (ComboIndex + 1 >= ComboMontage->GetNumSections())
-    {
-        return;
-    }
+    const int32 NextIndex = (ComboIndex + 1) % ComboMontage->GetNumSections();
+
 
     //다음 코스트 지불
     if (!CommitAbilityCost(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo))
@@ -146,10 +143,15 @@ void UGA_Attack::TryNextCombo()
     }
 
     //콤보 ANS 구간 안에 입력이 들어오면 다음 콤보 섹션으로 점프
-    MontageJumpToSection(ComboMontage->GetSectionName(ComboIndex + 1));
+    if (UAnimInstance* AnimInstance = CurrentActorInfo->GetAnimInstance())
+    {
+        //약공격 3타 ->1타 어색한거 보간
+        AnimInstance->RequestSlotGroupInertialization(TEXT("DefaultGroup"), 0.2f);
+    }
+    MontageJumpToSection(ComboMontage->GetSectionName(NextIndex));
 
     //다음 상태로 이동
-    ComboIndex++;
+    ComboIndex = NextIndex;
     bComboWindowOpen = false;
     bComboInputBuffered = false;
 }

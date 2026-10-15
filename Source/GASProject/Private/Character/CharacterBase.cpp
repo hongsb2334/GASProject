@@ -6,6 +6,7 @@
 #include "Weapons/WeaponBase.h"
 #include <AbilitySystemComponent.h>
 #include <Abilities/GameplayAbility.h>
+#include <GameplayEffect.h>
 
 
 // Sets default values
@@ -40,7 +41,7 @@ void ACharacterBase::BeginPlay()
     
     SpawnDefaultWeapon();
     GiveInitialAbilities();
-
+    ApplyInitialEffects();
 }
 
 void ACharacterBase::InitializeAttributes()
@@ -83,6 +84,26 @@ void ACharacterBase::SpawnDefaultWeapon()
     }
 
 
+}
+
+void ACharacterBase::ApplyInitialEffects()
+{
+    FGameplayEffectContextHandle Context = ASC->MakeEffectContext();
+    Context.AddSourceObject(this);
+
+    for (const TSubclassOf<UGameplayEffect>& Effect : InitialEffects)
+    {
+        if (!Effect)
+        {
+            continue;
+        }
+
+        const FGameplayEffectSpecHandle Spec = ASC->MakeOutgoingSpec(Effect, 1.0f, Context);
+        if (Spec.IsValid())
+        {
+            ASC->ApplyGameplayEffectSpecToSelf(*Spec.Data.Get());
+        }
+    }
 }
 
 

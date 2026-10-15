@@ -32,15 +32,22 @@ protected:
     void GiveInitialAbilities();
     void SpawnDefaultWeapon();
 
+    //게임 시작시 적용할 GE
+    void ApplyInitialEffects();
+
 protected:
     
-
     //어빌리티 시스템 컴포넌트
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "GAS")
     TObjectPtr<class UAbilitySystemComponent> ASC;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GAS")
     TArray<TSubclassOf<class UGameplayAbility>> InitialAbilities;
+
+    //시작시 자신에게 적용할 GE
+    //TArray로 관리하는 이유는 리젠 뿐 아니라 나중에 다른 패시브 효과도 넣을 수 있게 하려고
+    UPROPERTY(EditDefaultsOnly, Category = "GAS")
+    TArray<TSubclassOf<class UGameplayEffect>> InitialEffects;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Attribute")
     TObjectPtr<class UAttributeSetBase> BaseAttributeSet;
@@ -58,6 +65,6 @@ protected:
     UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "Weapon")
     TObjectPtr<AWeaponBase> EquippedWeapon;
 
-
+    
 
 };

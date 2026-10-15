@@ -43,6 +43,13 @@ void UPlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 {
     Super::PostGameplayEffectExecute(Data);
 
+    if (Data.EvaluatedData.Attribute == GetStaminaAttribute())
+    {
+        SetStamina(FMath::Clamp(GetStamina(), 0.0f, GetMaxStamina()));
+    }
+
+    //UAbilitySystemComponent& TargetASC = Data.Target;
+    //TargetASC.SetLooseGameplayTagCount(LOPGameplayTags::)
     
 }
 

@@ -3,7 +3,7 @@
 
 #include "Character/PlayerCharacter.h"
 #include "AbilitySystem/Attribute/PlayerAttributeSet.h"
-
+#include <LOPGameplayTags.h>
 
 
 
@@ -45,5 +45,29 @@ void APlayerCharacter::InitializeAttributes()
 
     ASC->SetNumericAttributeBase(PlayerAttributeSet->GetMaxStaminaAttribute(), InitialMaxStamina);
     ASC->SetNumericAttributeBase(PlayerAttributeSet->GetStaminaAttribute(), InitialMaxStamina);
+}
+
+void APlayerCharacter::HandleAttackInput()
+{
+    if (!ASC)
+    {
+        return;
+    }
+
+    //현재 공격중 상태이면 GA_Attack에 콤보 입력 전달
+    if (ASC->HasMatchingGameplayTag(LOPGameplayTags::Character_State_Attacking))
+    {
+        FGameplayEventData Payload;
+        Payload.EventTag = LOPGameplayTags::Event_Character_ComboInput;
+        Payload.Instigator = this;
+
+        ASC->HandleGameplayEvent(Payload.EventTag, &Payload);
+    }
+    else
+    {
+        //공격중 상태 아니면 공격 시작
+        FGameplayTagContainer AttackTags(LOPGameplayTags::Character_Ability_Attack);
+        ASC->TryActivateAbilitiesByTag(AttackTags);
+    }
 }
 

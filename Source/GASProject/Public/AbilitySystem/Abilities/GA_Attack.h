@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Abilities/GameplayAbility.h"
+#include "AbilitySystem/Abilities/LOPGameplayAbility.h"
 #include "GA_Attack.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GASPROJECT_API UGA_Attack : public UGameplayAbility
+class GASPROJECT_API UGA_Attack : public ULOPGameplayAbility
 {
 	GENERATED_BODY()
 	

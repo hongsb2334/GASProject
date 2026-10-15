@@ -24,6 +24,9 @@ public:
 
     virtual void InitializeAttributes() override;
 
+    UFUNCTION(BlueprintCallable, Category = "Input")
+    void HandleAttackInput();
+
 protected:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Attribute")
     TObjectPtr<class UPlayerAttributeSet> PlayerAttributeSet;

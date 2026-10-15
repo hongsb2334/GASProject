@@ -48,7 +48,7 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = "Attribute")
     float InitialMaxHealth = 200.0f;
 
-
+    //무기
     UPROPERTY(EditDefaultsOnly, Category = "Weapon")
     TSubclassOf<AWeaponBase> DefaultWeaponClass;
     
@@ -57,6 +57,7 @@ protected:
 
     UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "Weapon")
     TObjectPtr<AWeaponBase> EquippedWeapon;
+
 
 
 };

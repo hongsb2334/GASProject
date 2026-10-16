@@ -19,6 +19,7 @@ namespace LOPGameplayTags
 
     UE_DEFINE_GAMEPLAY_TAG(Character_State_Dodging, "Character.State.Dodging");
     UE_DEFINE_GAMEPLAY_TAG(Character_State_Guarding, "Character.State.Guarding");
+    UE_DEFINE_GAMEPLAY_TAG(Character_State_Sprinting, "Character.State.Sprinting");
     
     
     UE_DEFINE_GAMEPLAY_TAG(Character_State_Dead, "Character.State.Dead");

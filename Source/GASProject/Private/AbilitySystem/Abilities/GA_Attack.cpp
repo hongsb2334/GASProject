@@ -142,12 +142,12 @@ void UGA_Attack::TryNextCombo()
         return;
     }
 
-    //콤보 ANS 구간 안에 입력이 들어오면 다음 콤보 섹션으로 점프
     if (UAnimInstance* AnimInstance = CurrentActorInfo->GetAnimInstance())
     {
         //약공격 3타 ->1타 어색한거 보간
         AnimInstance->RequestSlotGroupInertialization(TEXT("DefaultGroup"), 0.2f);
     }
+    //콤보 ANS 구간 안에 입력이 들어오면 다음 콤보 섹션으로 점프
     MontageJumpToSection(ComboMontage->GetSectionName(NextIndex));
 
     //다음 상태로 이동

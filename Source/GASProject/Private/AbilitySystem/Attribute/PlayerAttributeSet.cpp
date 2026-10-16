@@ -46,10 +46,13 @@ void UPlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
     if (Data.EvaluatedData.Attribute == GetStaminaAttribute())
     {
         SetStamina(FMath::Clamp(GetStamina(), 0.0f, GetMaxStamina()));
+
+        UAbilitySystemComponent& TargetASC = Data.Target;
+        //스태미너가 다 떨어지면 Empty 태그 부여
+        TargetASC.SetLooseGameplayTagCount(LOPGameplayTags::Stamina_State_Empty, GetStamina() <= 0.0f ? 1 : 0);
+
     }
 
-    //UAbilitySystemComponent& TargetASC = Data.Target;
-    //TargetASC.SetLooseGameplayTagCount(LOPGameplayTags::)
     
 }
 

@@ -86,3 +86,25 @@ void APlayerCharacter::HandleAttackInput()
     }
 }
 
+void APlayerCharacter::HandleSprintStart()
+{
+    if (!ASC)
+    {
+        return;
+    }
+
+    FGameplayTagContainer SprintTags(LOPGameplayTags::Character_Ability_Sprint);
+    ASC->TryActivateAbilitiesByTag(SprintTags);
+}
+
+void APlayerCharacter::HandleSprintEnd()
+{
+    if (!ASC)
+    {
+        return;
+    }
+
+    FGameplayTagContainer SprintTags(LOPGameplayTags::Character_Ability_Sprint);
+    ASC->CancelAbilities(&SprintTags);
+}
+

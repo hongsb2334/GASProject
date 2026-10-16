@@ -26,8 +26,16 @@ public:
 
     virtual void InitializeAttributes() override;
 
+    //공격 입력
     UFUNCTION(BlueprintCallable, Category = "Input")
     void HandleAttackInput();
+
+    //스프린트 입력
+    UFUNCTION(BlueprintCallable, Category = "Input")
+    void HandleSprintStart();
+
+    UFUNCTION(BlueprintCallable, Category = "Input")
+    void HandleSprintEnd();
 
 protected:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Attribute")

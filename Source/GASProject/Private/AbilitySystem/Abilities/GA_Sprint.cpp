@@ -22,8 +22,8 @@ UGA_Sprint::UGA_Sprint()
     //이 상태일때는 달리기 불가
     ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Attacking);
     ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Dead);
-    ActivationBlockedTags.AddTag(LOPGameplayTags::Character_Ability_Dodge);
-    ActivationBlockedTags.AddTag(LOPGameplayTags::Character_Ability_Guard);
+    ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Dodging);
+    ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Guarding);
     ActivationBlockedTags.AddTag(LOPGameplayTags::Stamina_State_Empty);
 }
 

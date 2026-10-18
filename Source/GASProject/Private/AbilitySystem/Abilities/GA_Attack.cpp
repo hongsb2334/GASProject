@@ -22,12 +22,14 @@ UGA_Attack::UGA_Attack()
     //공격 중 상태 태그
     ActivationOwnedTags.AddTag(LOPGameplayTags::Character_State_Attacking);
 
-    //
+    //공격 실행중, 회피, 죽음 상태일 때 공격 못하게
     ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Attacking);
     ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Dodging);
     ActivationBlockedTags.AddTag(LOPGameplayTags::Character_State_Dead);
 
+    //공격 시작시 스프린트 종료
     CancelAbilitiesWithTag.AddTag(LOPGameplayTags::Character_Ability_Sprint);
+
 }
 
 void UGA_Attack::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)

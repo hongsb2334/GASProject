@@ -13,7 +13,7 @@
 ACharacterBase::ACharacterBase()
 {
 
-    //
+    //어빌리티 시스템 컴포넌트
     ASC = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
 
     //애트리뷰트 셋

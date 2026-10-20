@@ -14,6 +14,8 @@ namespace LOPGameplayTags
 
 
     UE_DEFINE_GAMEPLAY_TAG(Character_State, "Character.State");
+    UE_DEFINE_GAMEPLAY_TAG(Character_State_Moving, "Character.State.Moving");
+
     UE_DEFINE_GAMEPLAY_TAG(Character_State_Attacking, "Character.State.Attacking");
     UE_DEFINE_GAMEPLAY_TAG(Character_State_StaminaRegenBlocked, "Character.State.StaminaRegenBlocked");
 

@@ -62,6 +62,26 @@ void APlayerCharacter::InitializeAttributes()
     ASC->SetNumericAttributeBase(PlayerAttributeSet->GetStaminaAttribute(), InitialMaxStamina);
 }
 
+void APlayerCharacter::HandleMovingStart()
+{
+    if (ASC)
+    {
+        //움직임 시작되면 움직임 태그 부여
+        ASC->SetLooseGameplayTagCount(LOPGameplayTags::Character_State_Moving, 1);
+    }
+
+}
+
+void APlayerCharacter::HandleMovingEnd()
+{
+    if (ASC)
+    {
+        //움직임 종료시 태그 제거
+        ASC->SetLooseGameplayTagCount(LOPGameplayTags::Character_State_Moving, 0);
+    }
+
+}
+
 void APlayerCharacter::HandleAttackInput()
 {
     if (!ASC)

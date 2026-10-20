@@ -8,15 +8,16 @@ namespace LOPGameplayTags
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Attack);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Sprint);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Dodge);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Guard);
 
 
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State);
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Moving);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Attacking);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Dodging);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Guarding);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_Sprinting);
-    
-
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_State_StaminaRegenBlocked);
     
     
@@ -40,8 +41,6 @@ namespace LOPGameplayTags
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Stamina_State_Empty);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Stamina_State_Remain);
 
-    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Dodge);
-    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Character_Ability_Guard);
 
     
 

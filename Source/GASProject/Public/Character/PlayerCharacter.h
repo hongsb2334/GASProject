@@ -26,6 +26,15 @@ public:
 
     virtual void InitializeAttributes() override;
 
+    //움직임 입력
+    
+    UFUNCTION(BlueprintCallable, Category = "Input")
+    void HandleMovingStart();
+
+    UFUNCTION(BlueprintCallable, Category = "Input")
+    void HandleMovingEnd();
+
+
     //공격 입력
     UFUNCTION(BlueprintCallable, Category = "Input")
     void HandleAttackInput();

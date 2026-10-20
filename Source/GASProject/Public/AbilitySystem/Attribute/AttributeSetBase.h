@@ -11,7 +11,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FAttributeDataChanged, float, OldValue, float, NewValue);
 
 /**
- * 
+ *  캐릭터 공통 Attribute (체력)
  */
 UCLASS()
 class GASPROJECT_API UAttributeSetBase : public UAttributeSet

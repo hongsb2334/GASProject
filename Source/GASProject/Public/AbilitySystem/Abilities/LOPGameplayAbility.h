@@ -9,6 +9,7 @@
 /**
  * 
  */
+//플레이어 코스트 관련 공통 어빌리티
 UCLASS()
 class GASPROJECT_API ULOPGameplayAbility : public UGameplayAbility
 {
